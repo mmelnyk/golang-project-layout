@@ -1,0 +1,14 @@
+# Project parameters
+GOMODULE = github.com/mmelnyk/golang-project-layout
+
+# List of directories with binaries code
+BINARIES = \
+	./cmd/template_app \
+	./cmd/template_app_cli
+
+# Docker registry host name
+DOCKER_REGISTRY=localhost
+
+# Mapping docker files to required docker images
+DOCKER_IMAGE= \
+	Dockerfile&template_app
