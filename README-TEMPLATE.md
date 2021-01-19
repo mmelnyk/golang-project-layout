@@ -1,5 +1,5 @@
 # github.com/mmelnyk/golang-project-layout
-[![License][license-img]][license] [![Actions Status][action-img]][action] [![GoDoc][godoc-img]][godoc] [![Go Report Card][goreport-img]][goreport] [![Coverage Status][codecov-img]][codecov]
+[![License][license-img]][license] [![Actions Status][action-img]][action] [![PkgGoDev][pkggodev-img]][pkggodev] [![Go Report Card][goreport-img]][goreport] [![Coverage Status][codecov-img]][codecov]
 
 
 ## Contributing
@@ -14,9 +14,9 @@ the [code of conduct](CODE_OF_CONDUCT.md).
 [license]: https://github.com/mmelnyk/golang-project-layout/blob/master/LICENSE
 [action-img]: https://github.com/mmelnyk/golang-project-layout/workflows/Test/badge.svg
 [action]: https://github.com/mmelnyk/golang-project-layout/actions
-[godoc-img]: https://godoc.org/github.com/mmelnyk/golang-project-layout?status.svg
-[godoc]: https://godoc.org/github.com/mmelnyk/golang-project-layout
 [goreport-img]: https://goreportcard.com/badge/github.com/mmelnyk/golang-project-layout
 [goreport]: https://goreportcard.com/report/github.com/mmelnyk/golang-project-layout
 [codecov-img]: https://codecov.io/gh/<path>/branch/master/graph/badge.svg
 [codecov]: https://codecov.io/gh/<path>
+[pkggodev-img]: https://pkg.go.dev/badge/github.com/mmelnyk/golang-project-layout
+[pkggodev]: https://pkg.go.dev/github.com/mmelnyk/golang-project-layout
