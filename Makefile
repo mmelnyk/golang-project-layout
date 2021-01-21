@@ -31,9 +31,19 @@ HELP_SEL= \033[36m
 HELP_NORM= \033[0m
 
 ifeq ($(OS),Windows_NT)
-	BINARY_EXT := .exe
+    uname := Windows
 else
-	BINARY_EXT :=
+    uname := $(shell uname)
+endif
+
+BINARY_EXT :=
+ifeq ($(uname),Windows)
+	BINARY_EXT := .exe
+endif
+
+SEDI := sed -i
+ifeq ($(uname),Darwin) # Mac OS X
+    SEDI := sed -i ""
 endif
 
 GETDOCKERFILE=$(firstword $(subst &, ,$1))
@@ -57,7 +67,7 @@ build/%: prebuild
 	$(GOBUILD) $(GOBUILDOUT) ${@:build/%=%}
 
 .PHONY=test
-test: prebuild ## run unit tests with code coverage info
+test: _bindir prebuild  ## run unit tests with code coverage info
 	$(GOTEST) -cover -coverprofile=$(GOOUTDIR)/cover.out -covermode=atomic ./...
 	$(GOTOOL) cover -html=$(GOOUTDIR)/cover.out -o $(GOOUTDIR)/cover.html
 
@@ -108,7 +118,7 @@ format: ## format go code (via gofmt)
 # setup and configure section
 .PHONY=init
 
-init: init.githooks init.gomod init.replace ## setup current project
+init: init.replace init.githooks init.gomod ## setup current project
 
 init.from-tmpl:
 ifeq ($(TMPLMARKER),$(wildcard $(TMPLMARKER)))
@@ -118,6 +128,7 @@ ifeq ($(TMPLMARKER),$(wildcard $(TMPLMARKER)))
 	-mv README-TEMPLATE.md README.md
 	-mv github .github
 	git init
+	@git add .github .githooks .vscode .editorconfig .gitignore
 endif
 
 init.git: init.from-tmpl
@@ -134,10 +145,10 @@ ifeq (,$(wildcard go.mod))
 endif
 
 init.replace:
-	-@sed -i"" -e "s~$(TMPLMODULE)~$(GOMODULE)~g" README.md
-	-@sed -i"" -e "s~$(TMPLMODULE)~$(GOMODULE)~g" go.mod
-	-@sed -i"" -e "s~$(TMPLMODULE)~$(GOMODULE)~g" */*/*.go
-	-@sed -i"" -e "s~$(TMPLMODULE)~$(GOMODULE)~g" .github/*/*.md
+	-@$(SEDI) "s~$(TMPLMODULE)~$(GOMODULE)~g" *.md
+	-@$(SEDI) "s~$(TMPLMODULE)~$(GOMODULE)~g" go.mod
+	-@$(SEDI) "s~$(TMPLMODULE)~$(GOMODULE)~g" */*/*.go
+	-@$(SEDI) "s~$(TMPLMODULE)~$(GOMODULE)~g" .github/*/*.md
 
 # tools section
 .PHONY=tools tools.goimports tools.golint tools.gofuzz
