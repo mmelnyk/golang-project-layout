@@ -12,8 +12,8 @@ the [code of conduct](CODE_OF_CONDUCT.md).
 [covenant-img]: https://img.shields.io/badge/contributor%20covenant-v1.4%20adopted-ff69b4.svg
 [license-img]: https://img.shields.io/badge/license-MIT-blue.svg
 [license]: https://github.com/mmelnyk/golang-project-layout/blob/master/LICENSE
-[action-img]: https://github.com/mmelnyk/golang-project-layout/workflows/Test/badge.svg
-[action]: https://github.com/mmelnyk/golang-project-layout/actions
+[action-img]: ../../workflows/Test/badge.svg
+[action]: ../../actions
 [goreport-img]: https://goreportcard.com/badge/github.com/mmelnyk/golang-project-layout
 [goreport]: https://goreportcard.com/report/github.com/mmelnyk/golang-project-layout
 [codecov-img]: https://codecov.io/gh/<path>/branch/master/graph/badge.svg
