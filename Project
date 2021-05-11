@@ -9,6 +9,6 @@ BINARIES = \
 # Docker registry host name
 DOCKER_REGISTRY=localhost
 
-# Mapping docker files to required docker images
+# Mapping docker files to required docker images (line format = <Dockerfile>~<image-name>)
 DOCKER_IMAGE= \
-	Dockerfile&template_app
+	Dockerfile~template_app
