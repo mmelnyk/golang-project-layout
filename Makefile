@@ -37,8 +37,13 @@ else
 endif
 
 BINARY_EXT :=
-ifeq ($(uname),Windows)
+ifeq ($(GOOS),windows) ## Use .exe if our target platform is Windows
 	BINARY_EXT := .exe
+endif
+ifeq ($(uname),Windows) ## On Windows...
+ifeq ($(GOOS),) ## ... use .exe if there are no specified target platform
+	BINARY_EXT := .exe
+endif
 endif
 
 SEDI := sed -i
