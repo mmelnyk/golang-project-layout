@@ -150,7 +150,7 @@ init.replace:
 	-@$(SEDI) "s~$(TMPLMODULE)~$(GOMODULE)~g" *.md
 	-@$(SEDI) "s~$(TMPLMODULE)~$(GOMODULE)~g" go.mod
 	-@$(SEDI) "s~$(TMPLMODULE)~$(GOMODULE)~g" */*/*.go
-	-@$(SEDI) "s~$(TMPLMODULE)~$(GOMODULE)~g" .github/*/*.md
+	-@$(SEDI) "s~$(TMPLMODULE)~$(GOMODULE)~g" github/*/*.md
 
 # tools section
 .PHONY=tools tools.goimports tools.golint tools.gofuzz
