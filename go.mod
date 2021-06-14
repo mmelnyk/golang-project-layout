@@ -1,6 +1,6 @@
 module github.com/mmelnyk/golang-project-layout
 
-go 1.14
+go 1.16
 
 require (
 	github.com/spf13/cobra v1.1.1
