@@ -4,7 +4,7 @@
 set -e
 exec 1>&2
 
-# Check if changed files are well formated 
+# Check if changed files are well formated
 git diff --cached --name-status | while read st file; do
         # skip deleted files
         if [ "$st" == 'D' ]; then continue; fi
@@ -19,13 +19,13 @@ git diff --cached --name-status | while read st file; do
         fi
 done
 
-# Do golint on updated files
+# Do staticcheck on updated files
 git diff --cached --name-status | while read st file; do
         # skip deleted files
         if [ "$st" == 'D' ]; then continue; fi
         # do a check only on the go files
         if [[ "$file" =~ ".go" ]]; then
-		golint $file
+		staticcheck $file
         fi
 done
 
