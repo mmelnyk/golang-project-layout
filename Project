@@ -1,11 +1,20 @@
 # Project parameters
+
+# Golang module name
 GOMODULE = github.com/mmelnyk/golang-project-layout
 
+# Section with settings - uncomment required lines
+# Support and build docker containers
+BUILD_DOCKER=yes
+
+
+# Other configuration
 # List of directories with binaries code
 BINARIES = \
 	./cmd/template_app \
 	./cmd/template_app_cli
 
+# Docker section
 # Docker registry host name
 DOCKER_REGISTRY=localhost
 
