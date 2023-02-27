@@ -25,7 +25,7 @@ ifeq ($(TMPLMARKER),$(wildcard $(TMPLMARKER)))
 	-mv README-TEMPLATE.md README.md
 	-mv github .github
 	git init
-	@git add .github .githooks .vscode .editorconfig .gitignore
+	@git add .github .githooks .make .vscode .editorconfig .gitignore
 endif
 
 init.git: init.from-tmpl

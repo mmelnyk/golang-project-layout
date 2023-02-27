@@ -6,9 +6,18 @@ GOMODULE = github.com/mmelnyk/golang-project-layout
 # Section with settings - uncomment required lines
 # Support and build docker containers
 BUILD_DOCKER=yes
-
+# Support multiplatform builds
+BUILD_MULTIPLATFORM=yes
 
 # Other configuration
+
+# List of required multiplatform builds
+BUILDS=\
+	darwin-amd64  \
+	darwin-arm64  \
+	linux-amd64   \
+	windows-amd64 \
+
 # List of directories with binaries code
 BINARIES = \
 	./cmd/template_app \

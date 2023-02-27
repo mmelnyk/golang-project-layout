@@ -3,7 +3,7 @@ all: check test build ## Do check - test - build for the project
 
 .PHONY=prebuild
 prebuild:
-	$(eval TIMESTAMP != date -u '+%Y-%m-%d_%I:%M:%S%p')
+	$(eval TIMESTAMP ?= $(shell date -u '+%Y-%m-%d_%I:%M:%S%p'))
 	$(eval GITHASH := $(if $(GITHASH), $(GITHASH), $(shell git rev-parse HEAD 2>/dev/null|| echo N/A )))
 	$(eval BUILDNUMBER ?= DEVBUILD)
 
