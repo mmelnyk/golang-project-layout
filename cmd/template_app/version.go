@@ -9,6 +9,7 @@ import (
 var (
 	buildstamp  = "not set"
 	buildnumber = "not set"
+	giturl      = "not set"
 	githash     = "not set"
 )
 

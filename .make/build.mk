@@ -6,6 +6,7 @@ prebuild:
 	$(eval TIMESTAMP ?= $(shell date -u '+%Y-%m-%d_%I:%M:%S%p'))
 	$(eval GITHASH := $(if $(GITHASH), $(GITHASH), $(shell git rev-parse HEAD 2>/dev/null|| echo N/A )))
 	$(eval BUILDNUMBER ?= DEVBUILD)
+	$(eval GITURL ?= $(shell git config --get remote.origin.url 2>/dev/null|| echo N/A))
 
 _bindir:
 	@mkdir -p $(GOOUTDIR)

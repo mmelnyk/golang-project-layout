@@ -6,7 +6,7 @@ GOTEST=$(GOVARS) $(GOCMD) test
 GOTOOL=$(GOCMD) tool
 GOVET=$(GOCMD) vet
 GOGET=$(GOVARS) $(GOCMD) get
-GOBUILDOPT=-a -ldflags "-X main.buildnumber=$(BUILDNUMBER)  -X main.githash=$(subst $(SPACE),$(UNDERSCORE),$(GITHASH)) -X main.buildstamp=$(TIMESTAMP)"
+GOBUILDOPT=-a -ldflags "-X main.buildnumber=$(BUILDNUMBER) -X main.giturl=$(GITURL) -X main.githash=$(subst $(SPACE),$(UNDERSCORE),$(GITHASH)) -X main.buildstamp=$(TIMESTAMP)"
 GOBUILD=$(GOVARS) $(GOCMD) build $(GOBUILDOPT)
 GOBUILDOUT=-o bin/${@:build/./cmd/%=%}$(BINARY_EXT)
 
