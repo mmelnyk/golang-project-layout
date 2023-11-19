@@ -11,10 +11,25 @@ prebuild:
 _bindir:
 	@mkdir -p $(GOOUTDIR)
 
+_envcheck:
+ifeq ($(FEATURE_SELF_UPDATE),yes)
+ifeq ($(MSIGN_PUBLIC),)
+	$(error MSIGN_PUBLIC is undefined)
+endif
+endif
+ifeq ($(MSIGN_SIGNATURE),yes)
+ifeq ($(MSIGN_PRIVATE),)
+	$(error MSIGN_PRIVATE is undefined)
+endif
+endif
+
 .PHONY=build build/%
-build: _bindir $(BINARIES:%=build/%) ## do project build
+build: tools.msign _envcheck _bindir $(BINARIES:%=build/%) ## do project build
 build/%: prebuild
 	$(GOBUILD) $(GOBUILDOUT) ${@:build/%=%}
+ifeq ($(MSIGN_SIGNATURE),yes)
+	$(MSIGN) sign --to-file bin/${@:build/./cmd/%=%}$(BINARY_EXT)
+endif
 
 .PHONY=test
 test: _bindir prebuild  ## run unit tests with code coverage info
@@ -44,6 +59,11 @@ clean: $(BINARIES:./cmd/%=clean/%) ## clean up files
 
 clean/%:
 	rm -f ${@:clean/%=$(GOOUTDIR)/%}$(BINARY_EXT)
+	rm -f ${@:clean/%=$(GOOUTDIR)/%}$(BINARY_EXT).msign
+
+ifeq ($(BUILD_MULTIPLATFORM),yes)
+clean: cleanmp
+endif
 
 .PHONY=format
 format: ## format go code (via gofmt)

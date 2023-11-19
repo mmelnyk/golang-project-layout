@@ -16,12 +16,23 @@ BUILDS=\
 	darwin-amd64  \
 	darwin-arm64  \
 	linux-amd64   \
+	linux-arm64   \
 	windows-amd64 \
+	windows-arm64 \
 
 # List of directories with binaries code
 BINARIES = \
 	./cmd/template_app \
 	./cmd/template_app_cli
+
+# Sign binaries with MSIGN tool
+MSIGN_SIGNATURE=yes
+
+# Features section
+# Enable version and build info
+FEATURE_SHOW_VERSION=yes
+# Enable binary self-update
+FEATURE_SELF_UPDATE=yes
 
 # Docker section
 # Docker registry host name

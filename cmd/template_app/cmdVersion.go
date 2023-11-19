@@ -1,3 +1,6 @@
+//go:build showversion
+// +build showversion
+
 package main
 
 import (
