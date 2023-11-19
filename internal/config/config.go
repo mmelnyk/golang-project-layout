@@ -3,7 +3,6 @@ package config
 import (
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -21,11 +20,11 @@ const (
 )
 
 var (
-	errConfigNotFound     = errors.New("Config not found")
-	errConfigNoConfigKind = errors.New("File is not config kind")
-	errConfigNoConfig     = errors.New("Config section not found")
-	errConfigWrongApp     = errors.New("Config is not for app")
-	errConfigNewer        = errors.New("Config version is newer than supported")
+	errConfigNotFound     = errors.New("config not found")
+	errConfigNoConfigKind = errors.New("file is not config kind")
+	errConfigNoConfig     = errors.New("config section not found")
+	errConfigWrongApp     = errors.New("config is not for app")
+	errConfigNewer        = errors.New("config version is newer than supported")
 )
 
 var (
@@ -125,7 +124,7 @@ func GetConfig(conf interface{}, app string, version int) error {
 		if err == nil {
 			// Read all drop-ins and concatenize them
 			for _, file := range files {
-				cont, err := ioutil.ReadFile(file)
+				cont, err := os.ReadFile(file)
 				if err == nil {
 					if err = checkYaml(cont); err != nil {
 						return fmt.Errorf("%s: %w", file, err)
@@ -142,7 +141,7 @@ func GetConfig(conf interface{}, app string, version int) error {
 	}
 
 	log.Info("Config file: " + cf)
-	cont, err := ioutil.ReadFile(cf)
+	cont, err := os.ReadFile(cf)
 	if err != nil {
 		return err
 	}
