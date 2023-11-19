@@ -41,11 +41,11 @@ check: check.vet check.static ## do static code checks
 
 .PHONY=check.vet
 check.vet: ## do go vet checks
-	$(GOVET) ./...
+	$(GOVET) $(GOTAGS) ./...
 
 .PHONY=check.static
 check.static: tools.staticcheck ## do staticcheck checks
-	$(GOSTATICCHECK) ./...
+	$(GOSTATICCHECK) $(GOTAGS) ./...
 
 .PHONY=check.fmt
 check.fmt: ## do check for right formating
